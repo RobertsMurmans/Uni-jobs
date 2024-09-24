@@ -3,7 +3,7 @@ from tkinter import ttk
 import math
 
 window = tk.Tk()
-window.title("Function, with 2 inputs")
+window.title("Triangle calck")
 window.geometry("720x720")
 
 st1x = ttk.Label(window, text="AB= ")
