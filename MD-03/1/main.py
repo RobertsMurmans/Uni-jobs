@@ -7,14 +7,13 @@ window.geometry("720x420")
 
 st1 = ttk.Label(window, text="x= ")
 st1.place(x=20,y=20)
-st1 = ttk.Label(window, text="y= ")
-st1.place(x=20,y=50)
+st2 = ttk.Label(window, text="y= ")
+st2.place(x=20,y=50)
 
 in1 = ttk.Entry(window)
 in1.place(x=50,y=20)
 in2 = ttk.Entry(window)
 in2.place(x=50,y=50)
-
 
 st3 = ttk.Label(window, text="Summa= ")
 st3.place(x=20,y=110)
@@ -60,11 +59,14 @@ def showRezults():
             outRem.config(text = "NaN")
 
     except ValueError:
+        outSum.config(text="Nav ievadits skaitlis")
+        outWDiv.config(text = "")
+        outRem.config(text = "")
+        outDiv.config(text = "")
+        outDif.config(text = "")
+        outMult.config(text = "")
         print("netika ievadīti skaitļi")
     
-    in1.delete(0, "end")
-    in2.delete(0, "end")
-
 btn1 = ttk.Button(window, text = "Rezultāts", width = 10, command=showRezults)
 btn1.place(x=50,y=80)
 
