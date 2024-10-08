@@ -1,20 +1,19 @@
 x_in = float(input("x: "))
 y_in = float(input("y: "))
 
-def findGoldenSpiral(x,y):
-    a,b,xr,yu,xl,yd,t,t2 = 1,1,1,1,0,0,1,1
+def findGoldenSpiral2(x,y,a,b,xr,yu,xl,yd,t,t2):
     while True:
         if xl <= x <= xr and yd <= y <= yu:
             if x > 0:
                 if y > 0:
-                    return xr,yu,min(a,b)
+                    return min(a,b)
                 else:
-                    return xr,yd,min(a,b)
+                    return min(a,b)
             else:
                 if y > 0:
-                    return xl,yu,min(a,b)
+                    return min(a,b)
                 else:
-                    return xl,yd,min(a,b)
+                    return min(a,b)
                 
         if a >= b:
             if t == 1:
@@ -33,40 +32,83 @@ def findGoldenSpiral(x,y):
                 t2=1
             a = a + b
 
-x_test, y_test, fib_min = findGoldenSpiral(x_in, y_in)
-
-if float(x_test) == x_in or float(y_test) == y_in:
-    if float(x_test) == x_in and float(y_test) == y_in:
-        if x_in > 0:
-            if y_in > 0:
-               z, z, fib1 = findGoldenSpiral(x_in+1, y_in)
-               z, z, fib2 = findGoldenSpiral(x_in, y_in+1)
+a,b,xr,yu,xl,yd,t,t2 = 1,1,1,1,0,0,1,1
+fib1, fib2 = None, None
+while True:
+    if xl <= x <= xr and yd <= y <= yu:
+        if x > 0:
+            if y > 0:
+                if float(xr) == x or float(yu) == y:
+                    if float(xr) == x and float(yu) == y:
+                        fib1 = findGoldenSpiral2(x+1, y,a,b,xr,yu,xl,yd,t,t2)
+                        fib2 = findGoldenSpiral2(x, y+1,a,b,xr,yu,xl,yd,t,t2)
+                        if fib1 > fib2:
+                            fib1,fib2=fib2,fib1
+                    elif float(xr) == x: 
+                        fib1 = findGoldenSpiral2(x+1, y,a,b,xr,yu,xl,yd,t,t2)
+                    elif float(yu) == y:
+                        fib1 = findGoldenSpiral2(x, y+1,a,b,xr,yu,xl,yd,t,t2)
             else:
-               z, z, fib1 = findGoldenSpiral(x_in+1, y_in)
-               z, z, fib2 = findGoldenSpiral(x_in, y_in-1)
+                if float(xr) == x or float(yd) == y:
+                    if float(xr) == x and float(yu) == y:
+                        fib1 = findGoldenSpiral2(x+1, y,a,b,xr,yu,xl,yd,t,t2)
+                        fib2 = findGoldenSpiral2(x, y-1,a,b,xr,yu,xl,yd,t,t2)
+                        if fib1 > fib2:
+                            fib1,fib2=fib2,fib1
+                    elif float(xr) == x: 
+                        fib1 = findGoldenSpiral2(x+1, y,a,b,xr,yu,xl,yd,t,t2)
+                    elif float(yd) == y:
+                        fib1 = findGoldenSpiral2(x, y-1,a,b,xr,yu,xl,yd,t,t2)
         else:
-            if y_in > 0:
-               z, z, fib1 = findGoldenSpiral(x_in-1, y_in)
-               z, z, fib2 = findGoldenSpiral(x_in, y_in+1)
+            if y > 0:
+                if float(xl) == x or float(yu) == y:
+                    if float(xl) == x and float(yu) == y:
+                        fib1 = findGoldenSpiral2(x-1, y,a,b,xr,yu,xl,yd,t,t2)
+                        fib2 = findGoldenSpiral2(x, y+1,a,b,xr,yu,xl,yd,t,t2)
+                        if fib1 > fib2:
+                            fib1,fib2=fib2,fib1
+                    elif float(xl) == x: 
+                        fib1 = findGoldenSpiral2(x-1, y,a,b,xr,yu,xl,yd,t,t2)
+                    elif float(yu) == y:
+                        fib1 = findGoldenSpiral2(x, y+1,a,b,xr,yu,xl,yd,t,t2)
             else:
-               z, z, fib1 = findGoldenSpiral(x_in-1, y_in)
-               z, z, fib2 = findGoldenSpiral(x_in, y_in-1)
-
-        print(fib_min, fib1, fib2)
-    elif float(x_test) == x_in:
-        if x_in > 0:
-            z, z, fib1 = findGoldenSpiral(x_in+1, y_in)
+                if float(xl) == x or float(yd) == y:
+                    if float(xl) == x and float(yu) == y:
+                        fib1 = findGoldenSpiral2(x-1, y,a,b,xr,yu,xl,yd,t,t2)
+                        fib2 = findGoldenSpiral2(x, y-1,a,b,xr,yu,xl,yd,t,t2)
+                        if fib1 > fib2:
+                            fib1,fib2=fib2,fib1
+                    elif float(xl) == x: 
+                        fib1 = findGoldenSpiral2(x-1, y,a,b,xr,yu,xl,yd,t,t2)
+                    elif float(yd) == y:
+                        fib1 = findGoldenSpiral2(x, y-1,a,b,xr,yu,xl,yd,t,t2)
+        a,b,c = min(a,b), fib1, fib2
+        break
+            
+    if a >= b:
+        if t == 1:
+            xr = xr + a
+            t=0
         else:
-            z, z, fib1 = findGoldenSpiral(x_in-1, y_in)
-
-        print(fib_min, fib1)
-    elif float(y_test) == y_in:
-        if y_in > 0:
-            z, z, fib1 = findGoldenSpiral(x_in, y_in+1)
+            xl = xl - a
+            t=1
+        b = b + a
+    else:
+        if t2 == 1:
+            yu = yu + b
+            t2=0
         else:
-            z, z, fib1 = findGoldenSpiral(x_in, y_in-1)
+            yd = yd - b
+            t2=1
+        a = a + b
 
-        print(fib_min, fib1)
+print(a)
 
-else:
-    print(fib_min)
+if b != None:
+    print(b)
+
+if c != None:
+    print(c)
+    
+
+input()
