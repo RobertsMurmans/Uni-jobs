@@ -1,5 +1,5 @@
-x_in = float(input("x: "))
-y_in = float(input("y: "))
+x = float(input("x: "))
+y = float(input("y: "))
 
 def findGoldenSpiral2(x,y,a,b,xr,yu,xl,yd,t,t2):
     while True:
