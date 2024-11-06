@@ -6,9 +6,9 @@ def times1024(inp):
         out = out+inp
     return out
 
-def times32(inp):
+def times128(inp):
     out = ""
-    for i in range(32):
+    for i in range(128):
         out = out+inp
     return out
 
@@ -20,7 +20,7 @@ AMB = times1024(AkB)
 
 AGB = times1024(AMB)
 
-payload = times32(AGB)
+payload = times128(AGB)
 
 file = open(path, "w")
 
