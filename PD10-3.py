@@ -4,6 +4,8 @@ if beigas < 2:
     print("Nederiga ieavade!")
     exit()
 
+print(1)
+
 for x in range(2,beigas+1):
     for y in range(2,x):
         if x%y==0:
