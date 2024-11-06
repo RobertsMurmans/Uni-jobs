@@ -10,5 +10,5 @@ for x in range(2,beigas+1):
     for y in range(2,x):
         if x%y==0:
             break
-    else:#Var ari ar variablu (irPirmskaitlis) un break vieta ielikt (irPirmskaitlis = 0)
+    else:
         print(x)
