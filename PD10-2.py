@@ -1,5 +1,4 @@
 virkne = input("Ievade >> ")
-
 garums = len(virkne)
 
 for x in range(garums):
