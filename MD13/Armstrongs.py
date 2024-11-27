@@ -7,20 +7,17 @@ def pakape(baze, kapinatajs):
 
 def summa(skaitlis, cipari):
     summa = 0
-    deviniVertiba = pakape(9,cipari)
-    maxSumma = deviniVertiba*cipari
-    
+
     for cipars in str(skaitlis):
         summa = summa + pakape(int(cipars), cipari)
-        maxSumma = maxSumma + maxSumma - deviniVertiba
-        if summa > skaitlis > maxSumma:
+        if summa > skaitlis:
             return 0
     return summa == skaitlis
 
 
 def main():
     armstrongs = ""
-    cipari = 3
+    cipari = 5
 
     while True:
         maksimums = pakape(10, cipari)
@@ -31,10 +28,10 @@ def main():
             if summa(x, cipari):
                 armstrongs = str(x)
             x += 1
-        
+      
         print(f"Aprekinats {cipari} ciparu gars skaitlis, lielakais lidz sim atrastais armstronga skaitlis ir: {armstrongs}.")
 
-        if input("Turpinat(y/n)?")[0] == "y":
+        if input("Turpinat(y/n)? ")[0] == "y":
             cipari += 1
         else: 
             break
