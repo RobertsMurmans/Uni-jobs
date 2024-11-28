@@ -20,7 +20,7 @@ def tabula(cipars):
             return astoni
         case "9":
             return devini
-    return 0
+    return -1
 
 
 def pakape(baze, kapinatajs):
