@@ -20,6 +20,8 @@ def tabula(cipars):
             return astoni
         case "9":
             return devini
+        case "m":
+            return mx
     return -1
 
 
@@ -32,37 +34,36 @@ def pakape(baze, kapinatajs):
 
 def summa(skaitlis):
     summa = 0
+    maxSum = tabula("m")
     for cipars in str(skaitlis):
         summa = summa + tabula(cipars)
-        if summa > skaitlis:
+        maxSum = maxSum - tabula("9") + tabula(cipars)
+        if summa > skaitlis or skaitlis > maxSum:
             return 0
-    return summa == skaitlis
-    
+    return 1
 
-#=======================================================================#
-
+#=======================================
 armstrongs = ""
 cipari = 5
 
 while True:
+    x = pakape(10, cipari)
+    minimums = pakape(10, cipari-1)
     divi = pakape(2,cipari)
     triss = pakape(3,cipari)
-    cetri = pakape(4,cipari)
+    cetri = divi*divi
     pieci = pakape(5,cipari)
-    sesi = pakape(6,cipari)
+    sesi = triss*divi
     septini = pakape(7,cipari)
-    astoni = pakape(8,cipari)
-    devini = pakape(9,cipari)
-
-    maksimums = pakape(10, cipari)
-    minimums = pakape(10, cipari-1)
-
-    x = minimums
-    while x < maksimums:
+    astoni = cetri*divi
+    devini = triss*triss
+    mx = devini*cipari
+    while x > minimums:
         if summa(x):
             armstrongs = str(x)
-        x += 1
-     
+            break
+        x -= 1
+
     print(f"Aprekinats {cipari} ciparu gars skaitlis, lielakais lidz sim atrastais armstronga skaitlis ir: {armstrongs}.")
 
     if input("Turpinat(y/n)? ")[0] == "y":
